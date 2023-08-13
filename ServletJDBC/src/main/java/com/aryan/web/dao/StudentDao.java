@@ -14,10 +14,6 @@ public class StudentDao {
 	
 	public Student getStudent(int rollno) {
 		System.out.println("Roll : "+rollno);
-		String class_name= "org.postgresql.Driver";
-		String url="jdbc:postgresql://localhost:5432/aryan";
-		String name="postgres";
-		String pass="aryan111";
 		
 		Student student = new Student();
 
@@ -25,14 +21,12 @@ public class StudentDao {
 		 
 	      try {
 	    	  String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-	    	  String appConfigPath = rootPath+ "/com/aryan/web/dao/db.properties";
+	    	  System.out.println(rootPath);
+	    	  String appConfigPath = rootPath+ "com/aryan/web/dao/db.properties";
 	    	  System.out.println(appConfigPath);
 	    	  String configFile = "C:\\Coding Software\\Apache Software Foundation\\Tomcat 9.0\\wtpwebapps\\ServletJDBC\\WEB-INF\\classes\\com\\aryan\\web\\dao\\db.properties";
-	    	  
-	    	  File file = new File("C:\\Coding Software\\Apache Software Foundation\\Tomcat 9.0\\wtpwebapps\\ServletJDBC\\WEB-INF\\classes\\com\\aryan\\web\\dao");
-	    	  for(String fileNames : file.list()) System.out.println(fileNames);
-	    	  
-	    	  dbProperties.load(new FileInputStream(configFile));
+	    	  System.out.println(configFile);
+	    	  dbProperties.load(new FileInputStream(appConfigPath));
 	         
 	         
 	      } catch(FileNotFoundException fnfe) {
